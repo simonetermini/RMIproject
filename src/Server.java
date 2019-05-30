@@ -1,0 +1,30 @@
+
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
+public class Server extends UnicastRemoteObject implements ServerInterface {
+    public Server() throws RemoteException{
+
+    }
+
+
+    @Override
+    public double getSum(double a, double b) {
+        return a+b;
+    }
+
+    public static void main(String[] args){
+        try {
+            ServerInterface server = new Server();
+            Naming.rebind("calculator", server);
+
+        }catch (RemoteException | MalformedURLException e){
+            e.printStackTrace();
+        }
+
+    }
+
+
+}
