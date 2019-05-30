@@ -11,7 +11,7 @@ public class Server extends UnicastRemoteObject implements ServerInterface {
 
 
     @Override
-    public double getSum(double a, double b) {
+    public double getSum(double a, double b) throws RemoteException{
         return a+b;
     }
 
